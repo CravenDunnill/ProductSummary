@@ -1,0 +1,44 @@
+<?php
+/**
+ * CravenDunnill ProductSummary template
+ *
+ * @var $block \CravenDunnill\ProductSummary\Block\Product\Summary
+ */
+?>
+<?php if ($block->hasSummaryData()): ?>
+<div class="product_summary_attributes" style="border: 3px solid #eeece7; border-radius: 6px; font-size: 0.8rem;">
+	<table style="width: 100%; border-collapse: collapse;">
+		<?php $suitability = $block->getSuitabilityAttributes(); ?>
+		<?php if (!empty($suitability)): ?>
+		<tr>
+			<td style="padding: 10px; font-weight: bold; width: 30%;">Suitability</td>
+			<td style="padding: 10px;"><?= $block->escapeHtml(implode(', ', $suitability)) ?></td>
+		</tr>
+		<?php endif; ?>
+		
+		<?php $slipRating = $block->getAttributeValue('tile_ptv'); ?>
+		<?php if ($slipRating): ?>
+		<tr style="border-top: 1px solid #eeece7;">
+			<td style="padding: 10px; font-weight: bold; width: 30%;">Slip Rating</td>
+			<td style="padding: 10px;"><?= $block->escapeHtml($slipRating) ?></td>
+		</tr>
+		<?php endif; ?>
+		
+		<?php $properties = $block->getPropertiesAttributes(); ?>
+		<?php if (!empty($properties)): ?>
+		<tr style="border-top: 1px solid #eeece7;">
+			<td style="padding: 10px; font-weight: bold; width: 30%;">Properties</td>
+			<td style="padding: 10px;"><?= $block->escapeHtml(implode(', ', $properties)) ?></td>
+		</tr>
+		<?php endif; ?>
+		
+		<?php $recycled = $block->getAttributeValue('tile_recycled_content'); ?>
+		<?php if ($recycled): ?>
+		<tr style="border-top: 1px solid #eeece7;">
+			<td style="padding: 10px; font-weight: bold; width: 30%;">Recycled Content</td>
+			<td style="padding: 10px;"><?= $block->escapeHtml($recycled) ?></td>
+		</tr>
+		<?php endif; ?>
+	</table>
+</div>
+<?php endif; ?>
